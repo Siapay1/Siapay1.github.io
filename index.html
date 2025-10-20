@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faiz Yahfakha - Personal Portfolio</title>
+    <title>Faiz Yahfakha - Web Senior Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --text: #333;
-            --bg: #f9f9f9;
-            --card-bg: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --text: #ffffff;
+            --text-secondary: #b8b8b8;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --shadow: rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -26,10 +25,11 @@
         }
 
         body {
-            background-color: var(--bg);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         .container {
@@ -39,72 +39,140 @@
             padding: 0 20px;
         }
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: "";
-            position: absolute;
+        /* Animasi Awal */
+        .intro-animation {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-            background-size: cover;
+            background: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        .intro-text {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--highlight);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 1.5s;
         }
 
         .profile-img {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            border: 5px solid white;
-            margin: 0 auto 20px;
-            background-color: #ddd;
+            border: 5px solid var(--highlight);
+            margin: 0 auto 30px;
+            background-color: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 60px;
-            color: var(--primary);
+            color: var(--text);
             position: relative;
             z-index: 1;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px var(--shadow);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 1s forwards 2s;
+        }
+
+        @keyframes zoomIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
         h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 4rem;
+            margin-bottom: 20px;
             position: relative;
             z-index: 1;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 2.2s;
         }
 
         .tagline {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 30px;
             position: relative;
             z-index: 1;
             font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 2.4s;
+        }
+
+        .senior-developer {
+            font-size: 2.5rem;
+            color: var(--highlight);
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 2.6s;
+        }
+
+        .description {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 2.8s;
         }
 
         /* Navigasi */
         nav {
-            background-color: var(--primary);
+            background-color: rgba(26, 26, 46, 0.9);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             box-shadow: 0 2px 10px var(--shadow);
+            backdrop-filter: blur(10px);
         }
 
         .nav-container {
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-start;
             align-items: center;
             padding: 15px 20px;
         }
@@ -114,6 +182,10 @@
             flex-direction: column;
             cursor: pointer;
             padding: 5px;
+            outline: none;
+            border: none;
+            background: transparent;
+            z-index: 1001;
         }
 
         .bar {
@@ -128,25 +200,28 @@
         .nav-menu {
             position: fixed;
             top: 60px;
-            right: -100%;
+            left: -100%;
             width: 80%;
             height: 100vh;
-            background-color: var(--primary);
+            background-color: rgba(26, 26, 46, 0.95);
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             padding-top: 50px;
-            transition: right 0.3s ease;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: left 0.3s ease;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
             list-style: none;
+            backdrop-filter: blur(10px);
         }
 
         .nav-menu.active {
-            right: 0;
+            left: 0;
         }
 
         .nav-menu li {
             margin: 20px 0;
+            text-align: center;
+            width: 100%;
         }
 
         .nav-menu a {
@@ -157,25 +232,12 @@
             position: relative;
             padding: 5px 0;
             font-size: 1.2rem;
+            display: block;
+            text-align: center;
         }
 
         .nav-menu a:hover {
-            color: var(--secondary);
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--secondary);
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
+            color: var(--highlight);
         }
 
         .nav-toggle.active .bar:nth-child(1) {
@@ -192,31 +254,101 @@
 
         /* Bagian utama */
         section {
-            padding: 80px 0;
+            padding: 100px 0;
             display: none;
         }
 
-        #about {
+        #home {
             display: block;
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-            color: var(--primary);
+            margin-bottom: 60px;
+            font-size: 2.8rem;
+            color: var(--text);
             position: relative;
         }
 
         h2::after {
             content: '';
             position: absolute;
-            width: 80px;
+            width: 100px;
             height: 4px;
-            background: var(--secondary);
-            bottom: -10px;
+            background: var(--highlight);
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        /* Home Section */
+        .home-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 80vh;
+        }
+
+        .home-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--highlight);
+        }
+
+        .home-subtitle {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .home-description {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .home-contact {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .home-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .home-contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .home-nav {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .home-nav-item {
+            padding: 10px 25px;
+            background: var(--card-bg);
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .home-nav-item:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
         }
 
         /* Tentang Saya */
@@ -235,6 +367,7 @@
         .about-text p {
             margin-bottom: 20px;
             text-align: justify;
+            font-size: 1.1rem;
         }
 
         .about-image {
@@ -255,7 +388,8 @@
         }
 
         .skill-list li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
         }
 
         /* Keahlian */
@@ -273,6 +407,7 @@
             transition: transform 0.3s, box-shadow 0.3s;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .skill-card:hover {
@@ -287,19 +422,94 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            background: linear-gradient(90deg, var(--highlight), var(--accent));
         }
 
         .skill-icon {
             font-size: 40px;
-            color: var(--secondary);
+            color: var(--highlight);
             margin-bottom: 20px;
         }
 
         .skill-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--primary);
+            color: var(--text);
+        }
+
+        /* portofolio Showcase */
+        .portofolio-section {
+            background: rgba(15, 52, 96, 0.2);
+            border-radius: 15px;
+            padding: 50px 30px;
+            margin: 50px 0;
+        }
+
+        .portofolio-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .tech-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--highlight);
+        }
+
+        .tech-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--shadow);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--highlight);
         }
 
         /* Latar Belakang */
@@ -313,7 +523,7 @@
             content: '';
             position: absolute;
             width: 6px;
-            background-color: var(--secondary);
+            background-color: var(--highlight);
             top: 0;
             bottom: 0;
             left: 50%;
@@ -341,6 +551,7 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px var(--shadow);
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .timeline-content::after {
@@ -369,8 +580,8 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: var(--secondary);
-            border: 4px solid white;
+            background-color: var(--highlight);
+            border: 4px solid var(--primary);
             border-radius: 50%;
             top: 20px;
             z-index: 1;
@@ -405,7 +616,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            background: linear-gradient(135deg, var(--highlight), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -434,22 +645,24 @@
         .form-group textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             font-size: 16px;
             transition: border-color 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
-            border-color: var(--secondary);
+            border-color: var(--highlight);
             outline: none;
         }
 
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            background: linear-gradient(135deg, var(--highlight), var(--accent));
             color: white;
             border: none;
             border-radius: 5px;
@@ -461,12 +674,12 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary);
+            background-color: rgba(15, 52, 96, 0.8);
             color: white;
             padding: 40px 0;
             text-align: center;
@@ -493,7 +706,7 @@
         }
 
         .social-link:hover {
-            background-color: var(--secondary);
+            background-color: var(--highlight);
             transform: translateY(-5px);
         }
 
@@ -512,7 +725,7 @@
         .bg-logo {
             position: absolute;
             font-size: 80px;
-            color: var(--primary);
+            color: var(--text);
         }
 
         /* Responsif */
@@ -551,10 +764,41 @@
             .tagline {
                 font-size: 1.2rem;
             }
+
+            .senior-developer {
+                font-size: 1.8rem;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .home-title {
+                font-size: 2.5rem;
+            }
+
+            .home-subtitle {
+                font-size: 1.5rem;
+            }
+
+            .home-contact {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .home-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Animasi Intro -->
+    <div class="intro-animation" id="introAnimation">
+        <div class="intro-text">Web Developer</div>
+    </div>
+
     <!-- Background logos -->
     <div class="bg-logos" id="bgLogos"></div>
 
@@ -567,24 +811,41 @@
                 <span class="bar"></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#about" class="nav-link">Home</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">Tentang Saya</a></li>
                 <li><a href="#skills" class="nav-link">Keahlian</a></li>
+                <li><a href="#portofolio" class="nav-link">portofolio</a></li>
                 <li><a href="#background" class="nav-link">Latar Belakang</a></li>
                 <li><a href="#contact" class="nav-link">Kontak</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Header -->
-    <header>
+    <!-- Home Section -->
+    <section id="home">
         <div class="container">
-            <div class="profile-img">
-                <i class="fas fa-user"></i>
+            <div class="home-content">
+                <h1 class="home-title">Faiz Yahfakha</h1>
+                <div class="home-subtitle">Ready to Innovate</div>
+                <div class="senior-developer">Web Senior Developer</div>
+                <p class="home-description">Information Systems Student<br>Creating an Innovative, Functional, and User-Friendly Website for Digital Solutions.</p>
+                
+                <div class="home-contact">
+                    <div class="home-contact-item">
+                        <i class="fab fa-github"></i>
+                        <span>Github</span>
+                    </div>
+                    <div class="home-contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram</span>
+                    </div>
+                    <div class="home-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                </div>
             </div>
-            <h1>Faiz Yahfakha</h1>
-            <p class="tagline">Teknik Komputer & Jaringan | Pemrograman dasar | Otomotif Motor</p>
         </div>
-    </header>
+    </section>
 
     <!-- Tentang Saya -->
     <section id="about">
@@ -648,12 +909,240 @@
                         <li>Pemahaman menyeluruh tentang sparepart motor dan cara kerjanya</li>
                         <li>Perawatan rutin (servis berkala, ganti oli, pengecekan rem & suspensi)</li>
                         <li>Analisis masalah teknis & pemecahan masalah secara cepat</li>
-                        <li>Overhaul mesin (bongkar pasang, penggantian komponen, setel klep,
-dsb.)</li>
-<li>Penguasaan alat bengkel (kunci momen, jangka Sorong, gerinda, bor,
-alat porting dan lain lain.</li>
-<li>Dan berbagai keahlian teknis otomotif lainnya</li>
+                        <li>Overhaul mesin (bongkar pasang, penggantian komponen, setel klep, dsb.)</li>
+                        <li>Penguasaan alat bengkel (kunci momen, jangka Sorong, gerinda, bor, alat porting dan lain lain.</li>
+                        <li>Dan berbagai keahlian teknis otomotif lainnya</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- portofolio -->
+    <section id="portofolio">
+        <div class="container">
+            <h2>Portofolio Showcase</h2>
+            <p class="portofolio-intro">Explore my journey through projects, certifications, and technical expertise. Each section represents a milestone in my continuous learning path.</p>
+            
+            <h3 style="text-align: center; margin-bottom: 30px; color: var(--highlight);">Tech Stack</h3>
+            <div class="tech-grid">
+                <!-- Logo yang sudah ada -->
+                <div class="tech-item">
+                    <i class="fab fa-html5 tech-icon"></i>
+                    <div class="tech-name">HTML</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-css3-alt tech-icon"></i>
+                    <div class="tech-name">CSS</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-js tech-icon"></i>
+                    <div class="tech-name">JavaScript</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-python tech-icon"></i>
+                    <div class="tech-name">Python</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-java tech-icon"></i>
+                    <div class="tech-name">Java</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-php tech-icon"></i>
+                    <div class="tech-name">PHP</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-database tech-icon"></i>
+                    <div class="tech-name">SQL</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-react tech-icon"></i>
+                    <div class="tech-name">React</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-node-js tech-icon"></i>
+                    <div class="tech-name">Node.js</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-linux tech-icon"></i>
+                    <div class="tech-name">Linux</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-ubuntu tech-icon"></i>
+                    <div class="tech-name">Ubuntu</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-terminal tech-icon"></i>
+                    <div class="tech-name">Terminal</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-server tech-icon"></i>
+                    <div class="tech-name">Debian</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-shield-alt tech-icon"></i>
+                    <div class="tech-name">Kali Linux</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-network-wired tech-icon"></i>
+                    <div class="tech-name">RouterOS</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-microchip tech-icon"></i>
+                    <div class="tech-name">Arduino</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-robot tech-icon"></i>
+                    <div class="tech-name">Raspberry Pi</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-code-branch tech-icon"></i>
+                    <div class="tech-name">Git</div>
+                </div>
+                
+                <!-- Logo tambahan sesuai permintaan -->
+                <div class="tech-item">
+                    <i class="fab fa-vuejs tech-icon"></i>
+                    <div class="tech-name">Vue.js</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-angular tech-icon"></i>
+                    <div class="tech-name">Angular</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-sass tech-icon"></i>
+                    <div class="tech-name">Svelte</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-golang tech-icon"></i>
+                    <div class="tech-name">Go</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-rust tech-icon"></i>
+                    <div class="tech-name">Rust</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-swift tech-icon"></i>
+                    <div class="tech-name">Swift</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-microsoft tech-icon"></i>
+                    <div class="tech-name">C#</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-copyright tech-icon"></i>
+                    <div class="tech-name">C++</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fas fa-copyright tech-icon"></i>
+                    <div class="tech-name">C</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-r-project tech-icon"></i>
+                    <div class="tech-name">R</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-docker tech-icon"></i>
+                    <div class="tech-name">Docker</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-aws tech-icon"></i>
+                    <div class="tech-name">AWS</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-google tech-icon"></i>
+                    <div class="tech-name">GCP</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-microsoft tech-icon"></i>
+                    <div class="tech-name">Azure</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-jenkins tech-icon"></i>
+                    <div class="tech-name">Jenkins</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-kubernetes tech-icon"></i>
+                    <div class="tech-name">K8s</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-gitlab tech-icon"></i>
+                    <div class="tech-name">GitLab</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-npm tech-icon"></i>
+                    <div class="tech-name">npm</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-yarn tech-icon"></i>
+                    <div class="tech-name">Yarn</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-wordpress tech-icon"></i>
+                    <div class="tech-name">WordPress</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-bootstrap tech-icon"></i>
+                    <div class="tech-name">Bootstrap</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-sass tech-icon"></i>
+                    <div class="tech-name">Sass</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-less tech-icon"></i>
+                    <div class="tech-name">Less</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-stack-overflow tech-icon"></i>
+                    <div class="tech-name">Stack</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-redhat tech-icon"></i>
+                    <div class="tech-name">Red Hat</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-fedora tech-icon"></i>
+                    <div class="tech-name">Fedora</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-centos tech-icon"></i>
+                    <div class="tech-name">CentOS</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-arch-linux tech-icon"></i>
+                    <div class="tech-name">Arch</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-apple tech-icon"></i>
+                    <div class="tech-name">macOS</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-windows tech-icon"></i>
+                    <div class="tech-name">Windows</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-android tech-icon"></i>
+                    <div class="tech-name">Android</div>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-app-store-ios tech-icon"></i>
+                    <div class="tech-name">iOS</div>
+                </div>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Network Infrastructure</h3>
+                    <p>Design and implementation of secure network infrastructure for enterprise environments.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Web Applications</h3>
+                    <p>Development of responsive and interactive web applications using modern frameworks.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Automotive Diagnostics</h3>
+                    <p>Integration of technology solutions for automotive diagnostics and monitoring systems.</p>
                 </div>
             </div>
         </div>
@@ -667,8 +1156,10 @@ alat porting dan lain lain.</li>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Pendidikan Formal</h3>
-                        <li>Saya Lulusan SMK Muhammadiyah 1 Gondangrejo dengan jurusan Teknik Komputer dan Jaringan.
-                         <li>Saya memperoleh sertifikasi di bidang komputer dan jaringan tahun 05 mei 2025.
+                        <ul>
+                            <li>Saya Lulusan SMK Muhammadiyah 1 Gondangrejo dengan jurusan Teknik Komputer dan Jaringan.</li>
+                            <li>Saya memperoleh sertifikasi di bidang komputer dan jaringan tahun 05 mei 2025.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -682,12 +1173,14 @@ alat porting dan lain lain.</li>
                         <h3>Kegiatan saat Magang / PKL</h3>
                         <p>Apa aja kegiatan PKL / Magang saya ?</p>
                         <p>Dibawah ini kegiatan yang saya lakukan saat Magang / PKL :</p>
-                            <li>membantu dalam pemasangan dan konfigurasi jaringan.
-                        	<li>memindah file dari DVD ke komputer.
-                        	<li>memperbaiki kabel LAN pada mesin absensi sidik jari / fingerprint.
-                        	<li>memperbaiki Kabel Lan pada Server utama instansi kampus.
-                        	<li>pemasangan Router Mesh pada instansi Kampus.
-                        	<li>membantu pelayanan tamu / mahasiswa di front office, membantu menyelesaikan / mengelola dokumentasi dan membuat nomor surat keluar dan masuk.
+                        <ul>
+                            <li>membantu dalam pemasangan dan konfigurasi jaringan.</li>
+                            <li>memindah file dari DVD ke komputer.</li>
+                            <li>memperbaiki kabel LAN pada mesin absensi sidik jari / fingerprint.</li>
+                            <li>memperbaiki Kabel Lan pada Server utama instansi kampus.</li>
+                            <li>pemasangan Router Mesh pada instansi Kampus.</li>
+                            <li>membantu pelayanan tamu / mahasiswa di front office, membantu menyelesaikan / mengelola dokumentasi dan membuat nomor surat keluar dan masuk.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -786,37 +1279,60 @@ alat porting dan lain lain.</li>
     </footer>
 
     <script>
-        // Fungsi untuk membuat logo latar belakang
-        function createBackgroundLogos() {
-            const bgLogos = document.getElementById('bgLogos');
-            const logos = [
-                'fab fa-ubuntu', 'fab fa-linux', 'fas fa-server', 'fas fa-network-wired',
-                'fas fa-code', 'fas fa-terminal', 'fas fa-microchip', 'fas fa-router',
-                'fas fa-shield-alt', 'fas fa-database', 'fas fa-cloud', 'fas fa-laptop-code'
-            ];
-            
-            for (let i = 0; i < 30; i++) {
-                const logo = document.createElement('i');
-                logo.className = `bg-logo ${logos[Math.floor(Math.random() * logos.length)]}`;
-                logo.style.top = `${Math.random() * 100}%`;
-                logo.style.left = `${Math.random() * 100}%`;
-                logo.style.transform = `rotate(${Math.random() * 360}deg)`;
-                logo.style.fontSize = `${Math.random() * 40 + 40}px`;
-                bgLogos.appendChild(logo);
-            }
-        }
-
-        // Fungsi untuk toggle menu
+        // Animasi Intro
         document.addEventListener('DOMContentLoaded', function() {
+            const introAnimation = document.getElementById('introAnimation');
+            
+            // Sembunyikan animasi intro setelah 2.5 detik
+            setTimeout(() => {
+                introAnimation.style.opacity = '0';
+                setTimeout(() => {
+                    introAnimation.style.display = 'none';
+                }, 1000);
+            }, 2500);
+            
+            // Fungsi untuk membuat logo latar belakang
+            function createBackgroundLogos() {
+                const bgLogos = document.getElementById('bgLogos');
+                const logos = [
+                    'fab fa-html5', 'fab fa-css3-alt', 'fab fa-js', 'fab fa-python',
+                    'fab fa-java', 'fab fa-php', 'fas fa-database', 'fab fa-react',
+                    'fab fa-node-js', 'fab fa-linux', 'fab fa-ubuntu', 'fas fa-terminal',
+                    'fas fa-server', 'fas fa-shield-alt', 'fas fa-network-wired',
+                    'fas fa-microchip', 'fas fa-robot', 'fas fa-code-branch',
+                    'fab fa-vuejs', 'fab fa-angular', 'fab fa-sass', 'fab fa-golang',
+                    'fab fa-rust', 'fab fa-swift', 'fab fa-microsoft', 'fab fa-r-project',
+                    'fab fa-docker', 'fab fa-aws', 'fab fa-google', 'fab fa-jenkins',
+                    'fab fa-kubernetes', 'fab fa-gitlab', 'fab fa-npm', 'fab fa-yarn',
+                    'fab fa-wordpress', 'fab fa-bootstrap', 'fab fa-less', 'fab fa-stack-overflow',
+                    'fab fa-redhat', 'fab fa-fedora', 'fab fa-centos', 'fab fa-arch-linux',
+                    'fab fa-apple', 'fab fa-windows', 'fab fa-android', 'fab fa-app-store-ios'
+                ];
+                
+                for (let i = 0; i < 40; i++) {
+                    const logo = document.createElement('i');
+                    logo.className = `bg-logo ${logos[Math.floor(Math.random() * logos.length)]}`;
+                    logo.style.top = `${Math.random() * 100}%`;
+                    logo.style.left = `${Math.random() * 100}%`;
+                    logo.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    logo.style.fontSize = `${Math.random() * 40 + 40}px`;
+                    bgLogos.appendChild(logo);
+                }
+            }
+
+            // Fungsi untuk toggle menu
             const navToggle = document.getElementById('navToggle');
             const navMenu = document.getElementById('navMenu');
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('section');
+            const homeNavItems = document.querySelectorAll('.home-nav-item');
             
             // Toggle menu hamburger
-            navToggle.addEventListener('click', function() {
+            navToggle.addEventListener('click', function(e) {
+                e.preventDefault();
                 navMenu.classList.toggle('active');
                 navToggle.classList.toggle('active');
+                this.blur(); // Hilangkan focus
             });
             
             // Navigasi antar section
@@ -838,6 +1354,27 @@ alat porting dan lain lain.</li>
                         navMenu.classList.remove('active');
                         navToggle.classList.remove('active');
                     }
+                    
+                    // Scroll ke atas
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Navigasi dari home nav items
+            homeNavItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    
+                    // Sembunyikan semua section
+                    sections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Tampilkan section yang dipilih
+                    document.getElementById(target).style.display = 'block';
                     
                     // Scroll ke atas
                     window.scrollTo({
