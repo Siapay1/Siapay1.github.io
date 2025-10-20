@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto: hengkerfbcyhro@gmail.com">hengkerfbcyhro@gmail.com</a></p>
-  <p>GitHub: <a href="https://github.com/Siapay1" target="_blank">github.com/Siapay1</a></p>
-</section>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +6,6 @@
     <title>Faiz Yahfakha - Personal Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Variabel CSS untuk tema */
         :root {
             --primary: #2c3e50;
             --secondary: #3498db;
@@ -24,7 +18,6 @@
             --shadow: rgba(0, 0, 0, 0.1);
         }
 
-        /* Reset dan gaya dasar */
         * {
             margin: 0;
             padding: 0;
@@ -102,53 +95,109 @@
         /* Navigasi */
         nav {
             background-color: var(--primary);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            width: 100%;
+            z-index: 1000;
             box-shadow: 0 2px 10px var(--shadow);
         }
 
-        nav ul {
+        .nav-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 60px;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--primary);
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 50px;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             list-style: none;
-            padding: 15px 0;
         }
 
-        nav li {
-            margin: 0 20px;
+        .nav-menu.active {
+            right: 0;
         }
 
-        nav a {
+        .nav-menu li {
+            margin: 20px 0;
+        }
+
+        .nav-menu a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
+            padding: 5px 0;
+            font-size: 1.2rem;
         }
 
-        nav a:hover {
+        .nav-menu a:hover {
             color: var(--secondary);
         }
 
-        nav a::after {
+        .nav-menu a::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             background-color: var(--secondary);
             transition: width 0.3s;
         }
 
-        nav a:hover::after {
+        .nav-menu a:hover::after {
             width: 100%;
+        }
+
+        .nav-toggle.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .nav-toggle.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
         }
 
         /* Bagian utama */
         section {
             padding: 80px 0;
+            display: none;
+        }
+
+        #about {
+            display: block;
         }
 
         h2 {
@@ -183,6 +232,11 @@
             min-width: 300px;
         }
 
+        .about-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
         .about-image {
             flex: 1;
             min-width: 300px;
@@ -193,6 +247,15 @@
             max-width: 100%;
             border-radius: 10px;
             box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .skill-list {
+            margin-top: 20px;
+            padding-left: 20px;
+        }
+
+        .skill-list li {
+            margin-bottom: 8px;
         }
 
         /* Keahlian */
@@ -495,6 +558,23 @@
     <!-- Background logos -->
     <div class="bg-logos" id="bgLogos"></div>
 
+    <!-- Navigasi -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-toggle" id="navToggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">Home</a></li>
+                <li><a href="#skills" class="nav-link">Keahlian</a></li>
+                <li><a href="#background" class="nav-link">Latar Belakang</a></li>
+                <li><a href="#contact" class="nav-link">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -502,181 +582,10 @@
                 <i class="fas fa-user"></i>
             </div>
             <h1>Faiz Yahfakha</h1>
-            <p class="tagline">Teknik Komputer & Jaringan | Programmer | Otomotif Motor</p>
+            <p class="tagline">Teknik Komputer & Jaringan | Pemrograman dasar | Otomotif Motor</p>
         </div>
     </header>
 
-    <!-- Navigasi -->
-<<<<<<< HEAD
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#about">Tentang Saya</a></li>
-                <li><a href="#skills">Keahlian</a></li>
-                <li><a href="#background">Latar Belakang</a></li>
-                <li><a href="#contact">Kontak</a></li>
-            </ul>
-        </div>
-    </nav>
-
-=======
-<nav>
-    <div class="container">
-        <div class="nav-toggle" id="navToggle">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="nav-menu" id="navMenu">
-            <li><a href="#about">Tentang Saya</a></li>
-            <li><a href="#skills">Keahlian</a></li>
-            <li><a href="#background">Latar Belakang</a></li>
-            <li><a href="#contact">Kontak</a></li>
-        </ul>
-    </div>
-</nav>
-
-<style>
-/* Navigasi */
-nav {
-    background-color: var(--primary);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 10px var(--shadow);
-}
-
-.container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 15px 20px;
-}
-
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 5px;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: white;
-    margin: 3px 0;
-    transition: 0.3s;
-    border-radius: 2px;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-menu li {
-    margin: 0 15px;
-}
-
-.nav-menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-    position: relative;
-    padding: 5px 0;
-}
-
-.nav-menu a:hover {
-    color: var(--secondary);
-}
-
-.nav-menu a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--secondary);
-    transition: width 0.3s;
-}
-
-.nav-menu a:hover::after {
-    width: 100%;
-}
-
-/* Responsif */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: flex;
-    }
-    
-    .nav-menu {
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        width: 80%;
-        height: 100vh;
-        background-color: var(--primary);
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 50px;
-        transition: right 0.3s ease;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    }
-    
-    .nav-menu.active {
-        right: 0;
-    }
-    
-    .nav-menu li {
-        margin: 20px 0;
-    }
-    
-    .nav-toggle.active .bar:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-    
-    .nav-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .nav-toggle.active .bar:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
-}
-</style>
-
-<script>
-// JavaScript untuk toggle menu
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-    
-    // Tutup menu ketika link diklik (untuk mobile)
-    const navLinks = document.querySelectorAll('.nav-menu a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            }
-        });
-    });
-});
-</script>
-
->>>>>>> e7b0e01 (Menambahkan contact section dan social links)
     <!-- Tentang Saya -->
     <section id="about">
         <div class="container">
@@ -685,30 +594,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="about-text">
                     <p>Halo! Saya Faiz Yahfakha, seorang profesional di bidang Teknologi Informasi dengan spesialisasi dalam Teknik Komputer dan Jaringan, serta memiliki dasar-dasar pemrograman. Saya juga memiliki minat dan keahlian dalam bidang otomotif motor.</p>
                     <p>Saya memiliki pengalaman dalam mengelola jaringan komputer, troubleshooting hardware dan software, serta mengembangkan solusi teknologi untuk berbagai kebutuhan. Dengan latar belakang yang kuat di bidang TI, saya siap memberikan solusi terbaik untuk masalah teknologi Anda.</p>
-                    <p>Saya Memiliki kelebihan semangat tinggi untuk menghadapi
-<<<<<<< HEAD
-
-tantangan baru, cepat beradaptasi, suka melakukan hal baru untuk menambah keahlian yang baru, mampu
-
-berkomunikasi efektif, disiplin dalam
-
-manajemen waktu, serta berorientasi pada
-
-pemecahan masalah. Mudah bergaul, mampu
-
-bekerja sama dalam tim, dan bertekad untuk
-
-terus belajar serta mengembangkan keahlian.</p>
-<p>Selain itu juga didalam keahlian saya juga bisa melakukan
--Instalasi Jaringan
--Konfigurasi Mikrotik dan Router
-
--Pemrograman Dasar
--Instalasi atau perbaikan kabel UTP (LAN)
-
--Instalasi Windows
--Pemeliharaan dan Perbaikan Komputer
--Menggantikan semua / salah satu komponen hardware pada Komputer.</p>
+                    <p>Saya memiliki kelebihan semangat tinggi untuk menghadapi tantangan baru, cepat beradaptasi, suka melakukan hal baru untuk menambah keahlian yang baru, mampu berkomunikasi efektif, disiplin dalam manajemen waktu, serta berorientasi pada pemecahan masalah. Mudah bergaul, mampu bekerja sama dalam tim, dan bertekad untuk terus belajar serta mengembangkan keahlian.</p>
+                    <p>Selain itu juga didalam keahlian saya juga bisa melakukan:</p>
+                    <ul class="skill-list">
+                        <li>Instalasi Jaringan</li>
+                        <li>Konfigurasi Mikrotik dan Router</li>
+                        <li>Pemrograman Dasar</li>
+                        <li>Instalasi atau perbaikan kabel UTP (LAN)</li>
+                        <li>Instalasi Windows</li>
+                        <li>Pemeliharaan dan Perbaikan Komputer</li>
+                        <li>Menggantikan semua / salah satu komponen hardware pada Komputer</li>
+                        <li>Bisa menggunakan Linux, Ubuntu, Debian, Kali Linux, Parrot OS, BackBox Linux, Fedora (DLL)</li>
+                        <li>Bisa membuat Website, Bot Wa AI (Artificial Intelligence), DDoS Attack Web, Akses Kamera Link, Lacak Lokasi (DLL)</li>
+                    </ul>
                 </div>
                 <div class="about-image">
                     <img src="https://via.placeholder.com/400x300/3498db/ffffff?text=Faiz+Yahfakha" alt="Faiz Yahfakha">
@@ -741,41 +639,21 @@ terus belajar serta mengembangkan keahlian.</p>
                         <i class="fas fa-motorcycle"></i>
                     </div>
                     <h3>Otomotif Motor</h3>
-                    <p>Saya seorang teknisi otomotif dengan pengalaman lebih dari 3
-
-tahun 7 bulan dalam mempelajari dan mendalami dunia otomotif
-
-motor secara otodidak. Memiliki kemampuan cepat memahami hal
-
-baru, disiplin, dan bersemangat untuk terus berkembang.
-
-Berpengalaman dalam permesinan, kelistrikan, dan penyetelan
-
-sepeda motor, serta terbiasa menangani berbagai masalah teknis
-
-dengan solusi yang efektif.
-
--Perawatan dan perbaikan mesin motor
-
--Sistem kelistrikan & perakitan kabel motor
-
--Penyetelan karburator & sistem pengapian pada motor
-
--Pemahaman menyeluruh tentang sparepart motor dan cara kerjanya
-
--Perawatan rutin (servis berkala, ganti oli, pengecekan rem & suspensi)
-
--Analisis masalah teknis & pemecahan masalah secara cepat
-
--Overhaul mesin (bongkar pasang, penggantian komponen, setel klep,
-
-dsb.)
-
--Penguasaan alat bengkel (kunci momen, jangka Sorong, gerinda, bor,
-
-alat porting dan lain lain.
-
-Dan berbagai keahlian teknis otomotif lainnya.</p>
+                    <p>Saya seorang teknisi otomotif dengan pengalaman lebih dari 3 tahun 7 bulan dalam mempelajari dan mendalami dunia otomotif motor secara otodidak. Memiliki kemampuan cepat memahami hal baru, disiplin, dan bersemangat untuk terus berkembang.</p>
+                    <p>Berpengalaman dalam permesinan, kelistrikan, dan penyetelan sepeda motor, serta terbiasa menangani berbagai masalah teknis dengan solusi yang efektif.</p>
+                    <ul class="skill-list">
+                        <li>Perawatan dan perbaikan mesin motor</li>
+                        <li>Sistem kelistrikan & perakitan kabel motor</li>
+                        <li>Penyetelan karburator & sistem pengapian pada motor</li>
+                        <li>Pemahaman menyeluruh tentang sparepart motor dan cara kerjanya</li>
+                        <li>Perawatan rutin (servis berkala, ganti oli, pengecekan rem & suspensi)</li>
+                        <li>Analisis masalah teknis & pemecahan masalah secara cepat</li>
+                        <li>Overhaul mesin (bongkar pasang, penggantian komponen, setel klep,
+dsb.)</li>
+<li>Penguasaan alat bengkel (kunci momen, jangka Sorong, gerinda, bor,
+alat porting dan lain lain.</li>
+<li>Dan berbagai keahlian teknis otomotif lainnya</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -789,44 +667,33 @@ Dan berbagai keahlian teknis otomotif lainnya.</p>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Pendidikan Formal</h3>
-                        <p>Lulusan SMK Muhammadiyah 1 Gondangrejo dengan jurusan Teknik Komputer dan Jaringan. Memperoleh sertifikasi di bidang komputer dan jaringan tahun 05 mei 2025.</p>
+                        <li>Saya Lulusan SMK Muhammadiyah 1 Gondangrejo dengan jurusan Teknik Komputer dan Jaringan.
+                         <li>Saya memperoleh sertifikasi di bidang komputer dan jaringan tahun 05 mei 2025.
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Pengalaman PKL / Magang </h3>
-                        <p>Saya berpengalaman melalui magang
-
-dalam mendukung operasional IT, mulai dari
-
-pemasangan jaringan hingga troubleshooting.</p>
+                        <h3>Pengalaman PKL / Magang</h3>
+                        <p>Saya berpengalaman melalui magang dalam mendukung operasional IT, mulai dari pemasangan jaringan hingga troubleshooting di UNS Fkor Manahan Surakarta.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Aktivitas saat Magang / PKL</h3>
-                        <p>Saya melakukan aktivitas di UNS Fkor Manahan Surakarta seperti 
--Membantu dalam pemasangan dan konfigurasi jaringan.
-
--Memindah file dari DVD ke komputer serta memperbaiki
-
--kabel LAN pada mesin absensi sidik jari / fingerprint
-
--Memperbaiki Kabel Lan pada Server utama instansi kampus serta
-
--pemasangan Router Mesh pada instansi Kampus
-
--Membantu pelayanan tamu / mahasiswa di front office
-
--membantu menyelesaikan / mengelola dokumentasi dan membuat
-
-nomor surat keluar dan masuk. (DLL masih banyak lagi)</p>
+                        <h3>Kegiatan saat Magang / PKL</h3>
+                        <p>Apa aja kegiatan PKL / Magang saya ?</p>
+                        <p>Dibawah ini kegiatan yang saya lakukan saat Magang / PKL :</p>
+                            <li>membantu dalam pemasangan dan konfigurasi jaringan.
+                        	<li>memindah file dari DVD ke komputer.
+                        	<li>memperbaiki kabel LAN pada mesin absensi sidik jari / fingerprint.
+                        	<li>memperbaiki Kabel Lan pada Server utama instansi kampus.
+                        	<li>pemasangan Router Mesh pada instansi Kampus.
+                        	<li>membantu pelayanan tamu / mahasiswa di front office, membantu menyelesaikan / mengelola dokumentasi dan membuat nomor surat keluar dan masuk.
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
-                        <h3>Proyek Pribadi</h3>
-                        <p>Mengembangkan berbagai proyek IT pribadi termasuk website, aplikasi sederhana, dan solusi jaringan untuk usaha kecil dan menengah. Juga aktif dalam komunitas otomotif motor.</p>
+                        <h3>Tujuan Karir</h3>
+                        <p>Saya memiliki tekad yang kuat untuk terus mengembangkan bakat dan keahlian diri, serta mempelajari berbagai bidang baru guna memperluas wawasan dan kemampuan profesional. Saya percaya bahwa keberanian untuk terus belajar dan mengasah beragam keterampilan merupakan kunci dalam membangun karier yang jelas, berkembang, dan berorientasi pada masa depan.</p>
                     </div>
                 </div>
             </div>
@@ -901,16 +768,16 @@ nomor surat keluar dan masuk. (DLL masih banyak lagi)</p>
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#" class="social-link">
+                <a href="https://instagram.com/faiz132y" target="_blank" class="social-link">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="https://tiktok.com/@pwpwyh" target="_blank" class="social-link">
                     <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="social-link">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="https://www.linkedin.com/in/faiz-yahfakha-41b7a1362?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-link">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </div>
@@ -918,239 +785,6 @@ nomor surat keluar dan masuk. (DLL masih banyak lagi)</p>
         </div>
     </footer>
 
-=======
-
-tantangan baru, cepat beradaptasi, suka melakukan hal baru untuk menambah keahlian yang baru, mampu
-
-berkomunikasi efektif, disiplin dalam
-
-manajemen waktu, serta berorientasi pada
-
-pemecahan masalah. Mudah bergaul, mampu
-
-bekerja sama dalam tim, dan bertekad untuk
-
-terus belajar serta mengembangkan keahlian.</p>
-<p>Selain itu juga didalam keahlian saya juga bisa melakukan
--Instalasi Jaringan
--Konfigurasi Mikrotik dan Router
-
--Pemrograman Dasar
--Instalasi atau perbaikan kabel UTP (LAN)
-
--Instalasi Windows
--Pemeliharaan dan Perbaikan Komputer
--Menggantikan semua / salah satu komponen hardware pada Komputer.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://via.placeholder.com/400x300/3498db/ffffff?text=Faiz+Yahfakha" alt="Faiz Yahfakha">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Keahlian -->
-    <section id="skills">
-        <div class="container">
-            <h2>Keahlian</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Teknik Komputer & Jaringan</h3>
-                    <p>Spesialisasi dalam instalasi, konfigurasi, dan pemeliharaan jaringan komputer. Menguasai berbagai sistem operasi jaringan seperti MikroTik RouterOS, serta troubleshooting jaringan LAN/WAN.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Pemrograman Dasar</h3>
-                    <p>Memiliki pengetahuan dasar dalam pemrograman menggunakan berbagai bahasa seperti HTML, CSS, JavaScript, dan Python. Familiar dengan lingkungan pengembangan di berbagai sistem operasi termasuk Linux (Ubuntu, Debian, Parrot OS).</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">
-                        <i class="fas fa-motorcycle"></i>
-                    </div>
-                    <h3>Otomotif Motor</h3>
-                    <p>Saya seorang teknisi otomotif dengan pengalaman lebih dari 3
-
-tahun 7 bulan dalam mempelajari dan mendalami dunia otomotif
-
-motor secara otodidak. Memiliki kemampuan cepat memahami hal
-
-baru, disiplin, dan bersemangat untuk terus berkembang.
-
-Berpengalaman dalam permesinan, kelistrikan, dan penyetelan
-
-sepeda motor, serta terbiasa menangani berbagai masalah teknis
-
-dengan solusi yang efektif.
-
--Perawatan dan perbaikan mesin motor
-
--Sistem kelistrikan & perakitan kabel motor
-
--Penyetelan karburator & sistem pengapian pada motor
-
--Pemahaman menyeluruh tentang sparepart motor dan cara kerjanya
-
--Perawatan rutin (servis berkala, ganti oli, pengecekan rem & suspensi)
-
--Analisis masalah teknis & pemecahan masalah secara cepat
-
--Overhaul mesin (bongkar pasang, penggantian komponen, setel klep,
-
-dsb.)
-
--Penguasaan alat bengkel (kunci momen, jangka Sorong, gerinda, bor,
-
-alat porting dan lain lain.
-
-Dan berbagai keahlian teknis otomotif lainnya.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Latar Belakang -->
-    <section id="background">
-        <div class="container">
-            <h2>Latar Belakang</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Pendidikan Formal</h3>
-                        <p>Lulusan SMK Muhammadiyah 1 Gondangrejo dengan jurusan Teknik Komputer dan Jaringan. Memperoleh sertifikasi di bidang komputer dan jaringan tahun 05 mei 2025.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Pengalaman PKL / Magang </h3>
-                        <p>Saya berpengalaman melalui magang
-
-dalam mendukung operasional IT, mulai dari
-
-pemasangan jaringan hingga troubleshooting.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Aktivitas saat Magang / PKL</h3>
-                        <p>Saya melakukan aktivitas di UNS Fkor Manahan Surakarta seperti 
--Membantu dalam pemasangan dan konfigurasi jaringan.
-
--Memindah file dari DVD ke komputer serta memperbaiki
-
--kabel LAN pada mesin absensi sidik jari / fingerprint
-
--Memperbaiki Kabel Lan pada Server utama instansi kampus serta
-
--pemasangan Router Mesh pada instansi Kampus
-
--Membantu pelayanan tamu / mahasiswa di front office
-
--membantu menyelesaikan / mengelola dokumentasi dan membuat
-
-nomor surat keluar dan masuk. (DLL masih banyak lagi)</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Proyek Pribadi</h3>
-                        <p>Mengembangkan berbagai proyek IT pribadi termasuk website, aplikasi sederhana, dan solusi jaringan untuk usaha kecil dan menengah. Juga aktif dalam komunitas otomotif motor.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Kontak -->
-    <section id="contact">
-        <div class="container">
-            <h2>Kontak</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div>
-                            <h3>Instagram</h3>
-                            <p>@faiz132y</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-tiktok"></i>
-                        </div>
-                        <div>
-                            <h3>TikTok</h3>
-                            <p>@pwpwyh</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div>
-                            <h3>WhatsApp</h3>
-                            <p>+62 XXX-XXXX-XXXX</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>faizyahfakha18@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nama</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Pesan</label>
-                            <textarea id="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Kirim Pesan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="social-links">
-            <a href="https://instagram.com/faiz132y" target="_blank" class="social-link">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://tiktok.com/@pwpwyh" target="_blank" class="social-link">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="social-link">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/faiz-yahfakha-41b7a1362?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-link">
-                <i class="fab fa-linkedin"></i>
-            </a>
-        </div>
-        <p>&copy; 2025 Faiz Yahfakha. All rights reserved.</p>
-    </div>
-</footer>
-
->>>>>>> e7b0e01 (Menambahkan contact section dan social links)
     <script>
         // Fungsi untuk membuat logo latar belakang
         function createBackgroundLogos() {
@@ -1172,32 +806,57 @@ nomor surat keluar dan masuk. (DLL masih banyak lagi)</p>
             }
         }
 
-        // Fungsi untuk smooth scroll
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
+        // Fungsi untuk toggle menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('navToggle');
+            const navMenu = document.getElementById('navMenu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            
+            // Toggle menu hamburger
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+            
+            // Navigasi antar section
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
+                    // Sembunyikan semua section
+                    sections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Tampilkan section yang dipilih
+                    document.querySelector(targetId).style.display = 'block';
+                    
+                    // Tutup menu (untuk mobile)
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                    }
+                    
+                    // Scroll ke atas
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 });
             });
-        });
-
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Pesan telah berhasil dikirim! Saya akan menghubungi Anda segera.');
-            this.reset();
-        });
-
-        // Inisialisasi
-        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Pesan telah berhasil dikirim! Saya akan menghubungi Anda segera.');
+                this.reset();
+            });
+            
+            // Inisialisasi
             createBackgroundLogos();
         });
     </script>
 </body>
-
 </html>
-
