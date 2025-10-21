@@ -829,23 +829,15 @@
                 <div class="home-subtitle">Ready to Innovate</div>
                 <div class="senior-developer">Web Senior Developer</div>
                 <p class="home-description">Information Systems Student<br>Creating an Innovative, Functional, and User-Friendly Website for Digital Solutions.</p>
-                
-                <div class="home-contact">
-                    <div class="home-contact-item">
-                        <i class="fab fa-github"></i>
-                        <span>Github</span>
-                    </div>
-                    <div class="home-contact-item">
-                        <i class="fab fa-instagram"></i>
-                        <span>Instagram</span>
-                    </div>
-                    <div class="home-contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>WhatsApp</span>
                 </div>
             </div>
         </div>
     </section>
+
+<!-- Audio Background -->
+<audio id="myAudio" loop>
+    <source src="DJ TIKTOK.mp3" type="audio/mpeg">
+</audio>
 
     <!-- Tentang Saya -->
     <section id="about">
@@ -903,15 +895,15 @@
                     <p>Saya seorang teknisi otomotif dengan pengalaman lebih dari 3 tahun 7 bulan dalam mempelajari dan mendalami dunia otomotif motor secara otodidak. Memiliki kemampuan cepat memahami hal baru, disiplin, dan bersemangat untuk terus berkembang.</p>
                     <p>Berpengalaman dalam permesinan, kelistrikan, dan penyetelan sepeda motor, serta terbiasa menangani berbagai masalah teknis dengan solusi yang efektif.</p>
                     <ul class="skill-list">
-                        <li>Perawatan dan perbaikan mesin motor</li>
-                        <li>Sistem kelistrikan & perakitan kabel motor</li>
-                        <li>Penyetelan karburator & sistem pengapian pada motor</li>
-                        <li>Pemahaman menyeluruh tentang sparepart motor dan cara kerjanya</li>
-                        <li>Perawatan rutin (servis berkala, ganti oli, pengecekan rem & suspensi)</li>
-                        <li>Analisis masalah teknis & pemecahan masalah secara cepat</li>
-                        <li>Overhaul mesin (bongkar pasang, penggantian komponen, setel klep, dsb.)</li>
+                        <li>Perawatan dan perbaikan mesin motor.</li>
+                        <li>Sistem kelistrikan & perakitan kabel motor.</li>
+                        <li>Penyetelan karburator & sistem pengapian pada motor.</li>
+                        <li>Pemahaman menyeluruh tentang sparepart motor dan cara kerjanya.</li>
+                        <li>Perawatan rutin (servis berkala, ganti oli, pengecekan rem & suspensi).</li>
+                        <li>Analisis masalah teknis & pemecahan masalah secara cepat.</li>
+                        <li>Overhaul mesin (bongkar pasang, penggantian komponen, setel klep, dsb).</li>
                         <li>Penguasaan alat bengkel (kunci momen, jangka Sorong, gerinda, bor, alat porting dan lain lain.</li>
-                        <li>Dan berbagai keahlian teknis otomotif lainnya</li>
+                        <li>Dan berbagai keahlian teknis otomotif lainnya.</li>
                     </ul>
                 </div>
             </div>
@@ -924,7 +916,7 @@
             <h2>Portofolio Showcase</h2>
             <p class="portofolio-intro">Explore my journey through projects, certifications, and technical expertise. Each section represents a milestone in my continuous learning path.</p>
             
-            <h3 style="text-align: center; margin-bottom: 30px; color: var(--highlight);">Tech Stack</h3>
+            <h3 style="text-align: center; margin-bottom: 30px; color: var(--highlight);">Supported by Software Tech</h3>
             <div class="tech-grid">
                 <!-- Logo yang sudah ada -->
                 <div class="tech-item">
@@ -1179,7 +1171,8 @@
                             <li>memperbaiki kabel LAN pada mesin absensi sidik jari / fingerprint.</li>
                             <li>memperbaiki Kabel Lan pada Server utama instansi kampus.</li>
                             <li>pemasangan Router Mesh pada instansi Kampus.</li>
-                            <li>membantu pelayanan tamu / mahasiswa di front office, membantu menyelesaikan / mengelola dokumentasi dan membuat nomor surat keluar dan masuk.</li>
+                            <li>membantu pelayanan tamu / mahasiswa di front office.</li>
+                            <li>membantu menyelesaikan / mengelola dokumentasi dan membuat nomor surat keluar dan masuk.</li>
                         </ul>
                     </div>
                 </div>
@@ -1327,13 +1320,34 @@
             const sections = document.querySelectorAll('section');
             const homeNavItems = document.querySelectorAll('.home-nav-item');
             
-            // Toggle menu hamburger
-            navToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                navMenu.classList.toggle('active');
-                navToggle.classList.toggle('active');
-                this.blur(); // Hilangkan focus
+           // Kode Audio yang lebih sederhana
+const audio = document.getElementById('myAudio');
+let audioStarted = false;
+
+// Toggle menu hamburger
+if (navToggle) {
+    navToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+        
+        // Coba putar audio hanya sekali saat pertama kali hamburger diklik
+        if (audio && !audioStarted) {
+            audio.muted = false;
+            audio.volume = 0.5;
+            
+            // Coba play, jika gagal tunggu interaksi selanjutnya
+            audio.play().then(() => {
+                audioStarted = true;
+            }).catch(() => {
+                // Audio akan diputar saat user klik lagi
+                console.log('Audio akan diputar saat interaksi berikutnya');
             });
+        }
+        
+        this.blur();
+    });
+}
             
             // Navigasi antar section
             navLinks.forEach(link => {
